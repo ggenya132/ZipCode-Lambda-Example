@@ -47,7 +47,27 @@ public class HttpHandlers {
     }
 
     private BiFunction<Map<String, Object>, Context, APIGatewayProxyResponseEvent> post() {
-        return (event, context) -> null;
+        return (event, context) -> {
+            String response;
+
+
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            LambdaLogger logger = context.getLogger();
+
+            logger.log("CONTEXT: " + gson.toJson(context));
+            logger.log("EVENT: " + gson.toJson(event));
+            String eventBody = (String) event.get("body");
+            Map<String, String> requestBodyJson = gson.fromJson(eventBody, Map.class);
+
+            logger.log("REQUEST BODY: " + gson.toJson(requestBodyJson));
+
+            response = gson.toJson(this.studentService.addStudent(requestBodyJson)).replace("\\\\", "");
+
+            return new APIGatewayProxyResponseEvent()
+                    .withStatusCode(200)
+                    .withBody(response)
+                    .withIsBase64Encoded(false);
+        };
     }
 
 
