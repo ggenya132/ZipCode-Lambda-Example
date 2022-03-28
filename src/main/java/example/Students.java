@@ -36,7 +36,6 @@ public class Students {
         names.add("Shivanaikar Vandana");
         names.add("Walker Alissa");
         names.add("Zheng Wei");
-        names.add("Vedensky Genya");
         int studentId = 0;
         for(String name : names){
             String[] firstAndLastName = name.split(" ");
