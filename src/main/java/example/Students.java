@@ -32,7 +32,6 @@ public class Students {
         names.add("Neha Nusera");
         names.add("Powell Daniel");
         names.add("Mike Prentice");
-        names.add("Mike Prentice");
         names.add("Rockandla Madhavi");
         names.add("Shivanaikar Vandana");
         names.add("Walker Alissa");
